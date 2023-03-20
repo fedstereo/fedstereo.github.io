@@ -301,13 +301,11 @@
 	}
 </style>
 
-<html>
 <head>
 	<title>NeRF-Supervised Deep Stereo</title>
 	<meta property="og:image" content="Path to my teaser.png"/> <!-- Facebook automatically scrapes this. Go to https://developers.facebook.com/tools/debug/ if you update and want to force Facebook to rescrape. -->
 	<meta property="og:title" content="NeRF-Supervised Deep Stereo" />
 	<meta property="og:url" content="https://nerfstereo.github.io/">
-	<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"> </script>
 	<!-- Get from Google Analytics -->
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src=""></script> 
@@ -318,6 +316,10 @@
 
 		gtag('config', 'UA-75863369-6');
 	</script>
+	<script type="text/javascript" id="MathJax-script" async
+	src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+	</script>
+
 </head>
 
 <body >
@@ -466,7 +468,7 @@
 		<table align=center width=1000px style="font-family: 'Noto Sans', sans-serif; font-size: 1.1em ">
 			<tr>
 				<td><p style="text-align: justify;">
-					On top, predictions by RAFT-Stereo trained with our approach on user-collected images, without using any synthetic datasets, ground-truth depth or (even) real stereo pairs. At the bottom, a zoom-in over the Backpack disparity map, showing an unprecedented level of detail compared to existing strategies not using ground-truth trained with the same data.
+					On top, predictions by RAFT-Stereo trained with our approach on user-collected images, <strong> without using any synthetic datasets, ground-truth depth or (even) real stereo pairs</strong>. At the bottom, a zoom-in over the Backpack disparity map, showing an unprecedented level of detail compared to existing strategies not using ground-truth trained with the same data.
 				</p>
 				</td>
 			</tr>
@@ -481,15 +483,15 @@
 		<center><h1>Abstract</h1></center>
 		<tr>
 			<td><p style="text-align: justify;">
-				We introduce a novel framework for training deep stereo networks effortlessly 
-				and without any ground-truth. By leveraging state-of-the-art neural rendering solutions, 
-				we generate stereo training data from image sequences collected with a single handheld camera. 
-				On top of them,  a NeRF-supervised training procedure is carried out, from which we exploit 
+				We introduce a novel framework for training <strong>deep stereo networks</strong> effortlessly 
+				and <strong>without any ground-truth</strong>. By leveraging state-of-the-art neural rendering solutions, 
+				we generate stereo training data from image sequences collected with a <strong>single handheld camera</strong>. 
+				On top of them,  a <strong>NeRF-supervised training procedure</strong> is carried out, from which we exploit 
 				rendered stereo triplets to compensate for occlusions and depth maps as proxy labels. 
 				This results in stereo networks capable of predicting sharp and detailed disparity maps.
-				Experimental results show that models trained under this regime yield a 30-40% improvement 
+				Experimental results show that models trained under this regime yield a <strong>30-40% improvement</strong> 
 				over existing self-supervised methods on the challenging Middlebury dataset, filling the gap 
-				to supervised models and, most times, outperforming them at zero-shot generalization.</p>
+				to supervised models and, most times, outperforming them at <strong>zero-shot generalization</strong>.</p>
 			</td>
 		</tr>
 	</table>
@@ -498,7 +500,7 @@
 	<hr>
 
 	<center><h1>Method</h1></center>
-
+<!--
 	<table align=center width=1000px style="font-family: 'Noto Sans', sans-serif; font-size: 1.1em ">
 		<tr>
 			<td><p style="text-align: justify;">
@@ -507,7 +509,7 @@
 		</tr>
 	</table>
 	<br>
-
+-->
 	<table align=center width=420px>
 		<center>
 			<tr>
@@ -552,9 +554,86 @@
 			</tr>
 		</center>
 	</table>
+		
+	<br>
+	<br>
+	<hr>
+
+
+
+	<center><h1>Collected Dataset</h1></center>
+ 
+	<table align=center width=1075px style="font-family: 'Noto Sans', sans-serif; font-size: 1.1em ">
+		<tr>
+			<td><p style="text-align: justify;">
+				We collect a total of <strong> 270 high-resolution scenes (&asymp;8Mpx)</strong>  in both indoor and outdoor environments using <strong> standard camera-equipped smartphones </strong> . For each scene, we focus on a/some specific object(s) and acquire 100 images from different viewpoints, ensuring that the scenery is completely static. The acquisition protocol involves a set of either front-facing or 360<sup>◦</sup> views. Here, we report single samples from 30 of the scenes composing our dataset.
+
+			</p>
+			</td>
+		</tr>
+	</table>
+
 	<br>
 
-    
+	<table align=center width=800px>
+		<tr>
+			<td align=center width=800px>
+				<center>
+					<td><img class="round" style="width:1100px" src="./images/collected_dataset.png"/></td>
+				</center>
+			</td>
+		</tr>
+	</table>
+
+	<br>
+	<hr>
+
+	<center><h1>Qualitative Results</h1></center>
+ 
+	<table align=center width=800px>
+		<tr>
+			<td align=center width=800px>
+				<center>
+					<td><img class="round" style="width:1100px" src="./images/qualitatives.png"/></td>
+				</center>
+			</td>
+		</tr>
+	</table>
+
+	<table align=center width=1075px style="font-family: 'Noto Sans', sans-serif; font-size: 1.1em ">
+		<tr>
+			<td><p style="text-align: justify;">
+				<strong> From left to right: </strong> reference image and disparity map obtained by training RAFT-Stereo using the popular image reconstruction loss function between binocular stereo pairs  \( \mathcal{L}_\rho \), the photometric loss between horizontally aligned triples \( \mathcal{L}_{3\rho} \), disparity supervision from proxy labels extracted using the method proposed in Aleotti et al. [3], and our NeRF-Supervised loss paradigm. 
+				
+			</p>
+			</td>
+		</tr>
+	</table>
+
+	<br>
+
+	<table align=center width=800px>
+		<tr>
+			<td align=center width=800px>
+				<center>
+					<td><img class="round" style="width:1100px" src="./images/qualitatives_eth.png"/></td>
+				</center>
+			</td>
+		</tr>
+	</table>
+
+	<table align=center width=1075px style="font-family: 'Noto Sans', sans-serif; font-size: 1.1em ">
+		<tr>
+			<td><p style="text-align: justify;">
+				<strong> Qualitative results on ETH3D. </strong>  We show reference images and disparity maps predicted by RAFT trained using our NeRF-Supervised loss paradigm. 
+				
+			</p>
+			</td>
+		</tr>
+	</table>
+
+	<br>
+
 	<div class="container is-max-desktop content" >
 		<h2 class="bibtex" style="font-size:32px; font-weight:400;">BibTeX</h2>
 		<pre   style="background-color: #f5f5f5; color: #4a4a4a; font-size: 1.5em; overflow-x: auto;"><code >@inproceedings{Tosi2023CVPR,
@@ -566,6 +645,7 @@
 	  </div>
 	  
 <br>
+
 </body>
 </html>
 

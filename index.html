@@ -463,15 +463,7 @@
 		<center><h1>Abstract</h1></center>
 		<tr>
 			<td><p style="text-align: justify;">
-				<i>"We introduce a novel framework for training <strong>deep stereo networks</strong> effortlessly 
-				and <strong>without any ground-truth</strong>. By leveraging state-of-the-art neural rendering solutions, 
-				we generate stereo training data from image sequences collected with a <strong>single handheld camera</strong>. 
-				On top of them,  a <strong>NeRF-supervised training procedure</strong> is carried out, from which we exploit 
-				rendered stereo triplets to compensate for occlusions and depth maps as proxy labels. 
-				This results in stereo networks capable of predicting sharp and detailed disparity maps.
-				Experimental results show that models trained under this regime yield a <strong>30-40% improvement</strong> 
-				over existing self-supervised methods on the challenging Middlebury dataset, filling the gap 
-				to supervised models and, most times, outperforming them at <strong>zero-shot generalization</strong>."</i></p>
+				<i>"We introduce a novel approach for adapting deep stereo networks in a collaborative manner. By building over principles of federated learning, we develop a distributed framework allowing for demanding the optimization process to a number of clients deployed in different environments. This makes it possible, for a deep stereo network running on resourced-constrained devices, to capitalize on the adaptation process carried out by other instances of the same architecture, and thus improve its accuracy in challenging environments even when it cannot carry out adaptation on its own. Experimental results show how federated adaptation performs equivalently to on-device adaptation, and even better when dealing with challenging environments."</i></p>
 			</td>
 		</tr>
 	</table>

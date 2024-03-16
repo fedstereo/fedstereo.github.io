@@ -491,9 +491,9 @@
 					<ul>
 						<li><p style="text-align: justify;"> <strong>Full Adaptation:</strong> For any incoming stereo pair \(b_t\), the network predicts a disparity map (or multiple, depending on the design) according to current weights \(w_t\). Subsequently, it updates them by minimizing a loss function, typically the sum of multiple terms \(\ell_i\) </p></li>
 						<center>\( w_{t+1} \leftarrow w_t - \eta \triangledown \sum_i\ell_i(w_t,b_t) \)</center>
-						<li><p style="text-align: justify;"> <strong>Modular Adaptation (Tonioni et al., CVPR 2019):</strong> For any adaptation step \(t\), a block \(i\) is sampled according to a probability distribution, then only the corresponding output is used to compute the loss and optimize the subset of weights \(w_t[i]\): </p></li>
+						<li><p style="text-align: justify;"> <strong>Modular Adaptation:</strong> Tonioni et al. (CVPR 2019) introduced MADNet, a network made of 5 encoder-decoder blocks predicting disparity maps at different scales. For any adaptation step \(t\), a block \(i\) is sampled according to a probability distribution, then only the corresponding output is used to compute the loss and optimize the subset of weights \(w_t[i]\): </p></li>
 						<center>\( i = \text{sample}( \text{softmax}(H) ) \)</center>
-						<center>\( w_{t+1}[i] \leftarrow w_t[i] - \eta \traingledown \ell_i(w_t,b_t)[i] \)</center>
+						<center>\( w_{t+1}[i] \leftarrow w_t[i] - \eta \triangledown \ell_i(w_t,b_t)[i] \)</center>
 					</ul>
 
 					<!--

@@ -502,7 +502,12 @@
 							<p> We define a set of active nodes \(A\), capable of adapting independently, and other listening clients \(C\) which demand the adaptation process to the former. The two categories are managed by a central server, in charge of receiving updated weights and distributing them to the listening nodes.</p>
 							<ul>
 								<li><p style="text-align: justify;"><strong>FedFULL (Algo 1):</strong> The server runs a loop (lines 4-15) during which it waits for updated weights transmitted by the active clients (lines 5-9). Once it has received the updates from each active client, the server aggregates such updates by computing the average of the weights as in FedAvg (McMahan et al., PMLR 2017) and dispatches the updated model to clients \(C\) (lines 11-12). Clients \(A\) send their updates periodically, after they perform \(T\) steps of adaptation (lines 16-20). This way, \(C\) receive updates to their weights and improve their accuracy, without actively running any GPU-intensive extra computation. However, significant data traffic between \(A\), the server, and \(C\) is introduced, proportional to the number of parameters in the stereo network, the number of clients, and the updates interval \(T\). </p></li>
-								<li><p style="text-align: justify;"><strong>FedMAD (Algo 2): </strong> At each adaptation step, the client keeps track of the blocks it updates (lines 4-6) which could be some or all of them. Then, it samples a single block according to a probability distribution of the most updated blocks (line 8), sends it solely to the server, and decays its number of updates (line 9). On the server side, averaging is performed only for the subset of blocks received. </p> <img src= "./images/fedmad.png" width=300px> </li>
+							</ul>
+							<br clear=”right” />
+
+							<img src= "./images/fedmad.png" width=300px align="right" hspace=”50” vspace=”50”>
+							<ul>
+								<li><p style="text-align: justify;"><strong>FedMAD (Algo 2): </strong> At each adaptation step, the client keeps track of the blocks it updates (lines 4-6) which could be some or all of them. Then, it samples a single block according to a probability distribution of the most updated blocks (line 8), sends it solely to the server, and decays its number of updates (line 9). On the server side, averaging is performed only for the subset of blocks received. </p> </li>
 							</ul>
 							<br clear=”right” />		
 

@@ -486,14 +486,15 @@
 				<td>
 					<h2> Under Construction... </h2>
 
-					<!--
-					<h2> 1 - Training Data Generation</h2>
+					
+					<h2> 1 - Online Adaptation for Stereo </h2>
 					<ul>
-						<li><p style="text-align: justify;"><strong>Image Collection and COLMAP Pre-processing.</strong> Acquire a set of images from a single static scene and estimate intrinsic and extrinsic camera parameters using COLMAP, which is a standard procedure for preparing user-collected data to be used in Neural Radiance Field (NeRF). </p></li>
+						<li><p style="text-align: justify;"> For any incoming stereo pair \(b_t)\, the network predicts a disparity map (or multiple, depending on the design) according to current weights \(w_t)\. Subsequently, it updates them by minimizing a loss function, typically the sum of multiple terms \(ℓ_i\) </p></li>
 						<li><p style="text-align: justify;"><strong>NeRF Training.</strong> Train an independent NeRF for each scene by rendering color for a batch of rays from collected image positions and optimizing an L2 loss with respect to pixel colors in the collected frames. In our work, we adopt Instant-NGP as the NeRF engine.</p></li>
 						<li><p style="text-align: justify;"><strong>Stereo Pairs Rendering.</strong> We define multiple virtual stereo cameras for each trained NeRF model. Then, we simultaneously render binocular stereo pairs at arbitrary spatial resolution while extracting disparity maps and uncertainty to train deep stereo networks. Additionally, we render a third image to the left of the reference frame of each stereo pair, which produces a perfectly rectified stereo triplet.</p></li>
 					</ul>
 
+					<!--
 					<h2> 2 - NeRF-Supervised Stereo Regime</h2>
 					<p>Data generated so far is used to train stereo models. Given a rendered image triplet \((I_l, I_c, I_r)\), we estimate a disparity map by feeding the network with \((I_c, I_r)\) as the left and right views of a standard stereo pair. Then, we propose an NS loss with two terms:</p>
 					<ul>

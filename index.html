@@ -489,10 +489,11 @@
 					
 					<h2> 1 - Online Adaptation for Stereo </h2>
 					<ul>
-						<li><p style="text-align: justify;"> For any incoming stereo pair \(b_t\), the network predicts a disparity map (or multiple, depending on the design) according to current weights \(w_t\). Subsequently, it updates them by minimizing a loss function, typically the sum of multiple terms \(\ell_i\) </p></li>
+						<li><p style="text-align: justify;"> <strong>Full Adaptation:</strong> For any incoming stereo pair \(b_t\), the network predicts a disparity map (or multiple, depending on the design) according to current weights \(w_t\). Subsequently, it updates them by minimizing a loss function, typically the sum of multiple terms \(\ell_i\) </p></li>
 						<center>\( w_{t+1} \leftarrow w_t - \eta \triangledown \sum_i\ell_i(w_t,b_t) \)</center>
-						<li><p style="text-align: justify;"><strong>NeRF Training.</strong> Train an independent NeRF for each scene by rendering color for a batch of rays from collected image positions and optimizing an L2 loss with respect to pixel colors in the collected frames. In our work, we adopt Instant-NGP as the NeRF engine.</p></li>
-						<li><p style="text-align: justify;"><strong>Stereo Pairs Rendering.</strong> We define multiple virtual stereo cameras for each trained NeRF model. Then, we simultaneously render binocular stereo pairs at arbitrary spatial resolution while extracting disparity maps and uncertainty to train deep stereo networks. Additionally, we render a third image to the left of the reference frame of each stereo pair, which produces a perfectly rectified stereo triplet.</p></li>
+						<li><p style="text-align: justify;"> <strong>Modular Adaptation:</strong> For any adaptation step \(t\), a block \(ti\) is sampled according to a probability distribution, then only the corresponding output is used to compute the loss and optimize the subset of weights \(w_t[i]\): </p></li>
+						<center>\( i = \text{sample}( \text{softmax}(H) ) \)</center>
+						<center>\( w_{t+1}[i] &\leftarrow w_t[i] - \eta \traingledown \ell_i(w_t,b_t)[i] \)</center>
 					</ul>
 
 					<!--

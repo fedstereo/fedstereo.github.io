@@ -496,14 +496,14 @@
 						<center>\( w_{t+1}[i] \leftarrow w_t[i] - \eta \triangledown \ell_i(w_t,b_t)[i] \)</center>
 					</ul>
 
-					<!--
-					<h2> 2 - NeRF-Supervised Stereo Regime</h2>
-					<p>Data generated so far is used to train stereo models. Given a rendered image triplet \((I_l, I_c, I_r)\), we estimate a disparity map by feeding the network with \((I_c, I_r)\) as the left and right views of a standard stereo pair. Then, we propose an NS loss with two terms:</p>
+					<h2> 2 - Federated Adaptation </h2>
+					<p> We define a set of active nodes \(A\), capable of adapting independently, and other listening clients \(C\) which demand the adaptation process to the former. The two categories are managed by a central server, in charge of receiving updated weights and distributing them to the listening nodes. </p>
 					<ul>
 						<li><p style="text-align: justify;"><strong>Triplet Photometric Loss.</strong> We measure the photometric difference between the warped reference image (using both the left and right images of the triplet) and \( I_c\) by adopting the Structural Similarity Index Measure (SSIM) and absolute pixel difference.</p></li>
 						<li><p style="text-align: justify;"><strong>Rendered Disparity Loss.</strong> We further assist the photometric loss by exploiting an additional loss between the predictions and the rendered disparities by NeRF. A filtering mechanism based on the rendered uncertainty is employed to retain only the most reliable pixels.</p></li>
 					</ul>
 
+					<!--
 					The two terms are summed with weights balancing the impact of photometric and disparity losses. This completes our <strong>NeRF-Supervised </strong> training regime.
 					-->
 				</td>

@@ -305,7 +305,7 @@
 	}
 	
 	.spoiler .expander:before {
-	  content: '[show]'
+	  content: '[show pseudo-code]'
 	}
 	
 	.spoiler #expand {
@@ -313,7 +313,7 @@
 	}
 	
 	.spoiler #expand:checked + .expander:before {
-	  content: '[hide]';
+	  content: '[hide pseudo-code]';
 	}
 	
 	.spoiler #expand:checked ~ .spoiler-content {
@@ -526,7 +526,7 @@
 							<div class="spoiler">
 								<input type="checkbox" id="expand" name="expand" />
 								<label class="expander" for="expand"></label>
-								<div class="spoiler-content"><img src="./images/federated_algo.png" width="30%" align="right" hspace=”200”></div>
+								<div class="spoiler-content"><img src="./images/federated_algo.png" width="50%" align="right" hspace=”200”></div>
 							</div>
 							<p> We define a set of active nodes \(A\), capable of adapting independently, and other listening clients \(C\) which demand the adaptation process to the former. The two categories are managed by a central server, in charge of receiving updated weights and distributing them to the listening nodes.</p>
 							<ul>
